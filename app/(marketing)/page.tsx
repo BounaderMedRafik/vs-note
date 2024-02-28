@@ -2,6 +2,7 @@ import React from "react";
 import MyHeading from "./_components/MyHeading";
 import MyHeroes from "./_components/MyHeroes";
 import MyFooter from "./_components/MyFooter";
+import { Button } from "@/components/ui/button";
 
 const page = () => {
   return (
@@ -10,6 +11,7 @@ const page = () => {
         <MyHeading />
         <MyHeroes />
       </div>
+
       <MyFooter />
     </div>
   );
