@@ -6,9 +6,10 @@ import React from "react";
 import MyLogo from "./MyLogo";
 import { ModeToggle } from "@/components/mode-toggle";
 import { useConvexAuth } from "convex/react";
-import { SignInButton } from "@clerk/clerk-react";
+import { SignInButton, UserButton } from "@clerk/clerk-react";
 import { Button } from "@/components/ui/button";
-import { Loader } from "lucide-react";
+import Link from "next/link";
+import { Spinner } from "@/components/MySpinner";
 
 const MyNavBar = () => {
   const { isAuthenticated, isLoading } = useConvexAuth();
@@ -25,8 +26,7 @@ const MyNavBar = () => {
       <div className="md:ml-auto md:justify-end justify-between w-full flex items-center gap-x-2">
         {isLoading && (
           <div className="text-xs flex gap-2 items-center ">
-            Loading
-            <Loader size={15} className="animate-spin" />
+            <Spinner />
           </div>
         )}
         {!isAuthenticated && !isLoading && (
@@ -38,6 +38,14 @@ const MyNavBar = () => {
             <SignInButton mode="modal">
               <Button>GET VS-NOTE NOW</Button>
             </SignInButton>
+          </>
+        )}
+        {isAuthenticated && !isLoading && (
+          <>
+            <Button className=" rounded-full" variant="outline" asChild>
+              <Link href="/documents">Access VS-NOTE</Link>
+            </Button>
+            <UserButton afterSignOutUrl="/" />
           </>
         )}
         <ModeToggle />
