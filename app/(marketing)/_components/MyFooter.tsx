@@ -4,9 +4,9 @@ import MyLogo from "./MyLogo";
 
 const MyFooter = () => {
   return (
-    <div className="flex items-center w-full p-6 bg-background z-50 dark:bg-[#1F1F1F]">
+    <div className="flex items-center w-full p-6 bg-background z-50 dark:border-t">
       <MyLogo />
-      <div className="md:ml-auto w-full justify-between md:justify-end flex items-center gap-x-2 text-muted-foreground">
+      <div className="md:ml-auto w-full justify-end md:justify-end flex items-center gap-x-2 text-muted-foreground">
         <Button variant="outline" size="sm">
           Privacy Policy
         </Button>
