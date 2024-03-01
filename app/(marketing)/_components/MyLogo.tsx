@@ -1,7 +1,7 @@
 import React from "react";
 
 const MyLogo = () => {
-  return <div>MyLogo</div>;
+  return <div className="hidden md:flex">MyLogo</div>;
 };
 
 export default MyLogo;
