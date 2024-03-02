@@ -2,7 +2,7 @@
 import { cn } from "@/lib/utils";
 import { ChevronsLeft, MenuIcon } from "lucide-react";
 import { usePathname } from "next/navigation";
-import { ElementRef, useRef, useState } from "react";
+import { ElementRef, useEffect, useRef, useState } from "react";
 import { useMediaQuery } from "usehooks-ts";
 
 const MyNavigation = () => {
@@ -64,6 +64,32 @@ const MyNavigation = () => {
     }
   };
 
+  useEffect(() => {
+    if (isMobile) {
+      collapse();
+    } else {
+      resetWidth();
+    }
+  }, [isMobile]);
+
+  useEffect(() => {
+    if (isMobile) {
+      collapse();
+    }
+  }, [pathname, isMobile]);
+
+  const collapse = () => {
+    if (sidebarRef.current && navbarRef.current) {
+      setIsCollapsed(true);
+      setIsResetting(true);
+
+      sidebarRef.current.style.width = "0";
+      navbarRef.current.style.setProperty("width", "100%");
+      navbarRef.current.style.setProperty("left", "0");
+      setTimeout(() => setIsResetting(false), 300);
+    }
+  };
+
   return (
     <>
       <aside
@@ -75,6 +101,7 @@ const MyNavigation = () => {
         )}
       >
         <div
+          onClick={collapse}
           role="button"
           className={cn(
             "h-6 w-6  flex items-center justify-center text-background hover:bg-background/75 hover:text-foreground absolute top-3 right-2 opacity-0 group-hover/sidebar:opacity-100 transition-all",
@@ -106,7 +133,11 @@ const MyNavigation = () => {
       >
         <nav className="bg-transparent px-3 py-2 w-full">
           {isCollapsed && (
-            <MenuIcon role="button" className="h-6 w-6 text-black" />
+            <MenuIcon
+              onClick={resetWidth}
+              role="button"
+              className="h-6 w-6 text-black"
+            />
           )}
         </nav>
       </div>
