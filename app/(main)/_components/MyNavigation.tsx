@@ -15,6 +15,7 @@ import {
   Settings,
   Trash,
 } from "lucide-react";
+import { useSettings } from "@/hooks/use-settings";
 import { usePathname } from "next/navigation";
 import { ElementRef, useEffect, useRef, useState } from "react";
 import { useMediaQuery } from "usehooks-ts";
@@ -28,6 +29,7 @@ import { ModeToggle } from "@/components/mode-toggle";
 import MyTrashBox from "./MyTrashBox";
 
 const MyNavigation = () => {
+  const settings = useSettings();
   const search = useSearch();
   const pathname = usePathname();
   const isMobile = useMediaQuery("(max-width: 768px)");
@@ -151,7 +153,7 @@ const MyNavigation = () => {
             isSearch
             icon={Search}
           />
-          <MyItem onClick={() => {}} label="Settings" icon={Settings} />
+          <MyItem onClick={settings.onOpen} label="Settings" icon={Settings} />
           <MyItem onClick={handleCreate} label="New page" icon={PlusCircle} />
         </div>
         <div className="mt-4">
@@ -194,7 +196,6 @@ const MyNavigation = () => {
           )}
         </nav>
       </div>
-      <ModeToggle />
     </>
   );
 };
