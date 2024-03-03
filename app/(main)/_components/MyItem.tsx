@@ -1,8 +1,13 @@
 "use client";
-import { ChevronDown, ChevronRight, LucideIcon } from "lucide-react";
+import { ChevronDown, ChevronRight, LucideIcon, Plus } from "lucide-react";
 import React from "react";
 import { Id } from "@/convex/_generated/dataModel";
 import { cn } from "@/lib/utils";
+import { Skeleton } from "@/components/ui/skeleton";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
+import { useMutation } from "convex/react";
+import { api } from "@/convex/_generated/api";
 
 interface ItemProps {
   id?: Id<"documents">;
@@ -29,8 +34,34 @@ const MyItem = ({
   onExpand,
   expanded,
 }: ItemProps) => {
-  const ChevronsIcon = expanded ? ChevronDown : ChevronRight;
+  const handleExpand = (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
+    event.stopPropagation();
+    onExpand?.();
+  };
 
+  const ChevronsIcon = expanded ? ChevronDown : ChevronRight;
+  const create = useMutation(api.documents.create);
+  const router = useRouter();
+  const onCreate = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    event.stopPropagation();
+    if (!id) return;
+    const promise = create({ title: "Untitled", parentDocument: id }).then(
+      (documentId) => {
+        if (!expanded) {
+          onExpand?.();
+        }
+        router.push(`/documents/${documentId}`);
+      }
+    );
+
+    toast.promise(promise, {
+      loading: "Creating a new note...",
+      success: "New note created!",
+      error: "Failed to create a new note.",
+    });
+  };
   return (
     <>
       <div
@@ -46,6 +77,7 @@ const MyItem = ({
       >
         {!!id && (
           <div
+            onClick={handleExpand}
             role="button"
             className="h-full rounded-sm hover:bg-primary dark:bg-primary-foreground"
           >
@@ -65,9 +97,34 @@ const MyItem = ({
             <span className="text-xs">⌘</span>K
           </kbd>
         )}
+        {!!id && (
+          <div className="ml-auto flex items-center gap-x-2">
+            <div
+              role="button"
+              onClick={onCreate}
+              className="opacity-0 group-hover:opacity-100 h-full ml-auto rouded-sm hover:bg-neutral-300 dark:hover:bg-neutral-600"
+            >
+              <Plus className="h-4 w-4 text-muted-foreground" />
+            </div>
+          </div>
+        )}
       </div>
     </>
   );
 };
 
 export default MyItem;
+
+MyItem.Skeleton = function ItemSkeleton({ level }: { level?: number }) {
+  return (
+    <div
+      style={{
+        paddingLeft: level ? `${level * 12 + 25}px` : "12px",
+      }}
+      className="flex gap-x-2 py-[3px]"
+    >
+      <Skeleton className="h-4 w-4" />
+      <Skeleton className="h-4 w-[30%]" />
+    </div>
+  );
+};

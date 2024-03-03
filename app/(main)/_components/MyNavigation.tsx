@@ -11,15 +11,15 @@ import { usePathname } from "next/navigation";
 import { ElementRef, useEffect, useRef, useState } from "react";
 import { useMediaQuery } from "usehooks-ts";
 import MyUserItem from "./MyUserItem";
-import { useMutation, useQuery } from "convex/react";
+import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import MyItem from "./MyItem";
 import { toast } from "sonner";
+import MyDocumentList from "./MyDocumentList";
 
 const MyNavigation = () => {
   const pathname = usePathname();
   const isMobile = useMediaQuery("(max-width: 768px)");
-  const documents = useQuery(api.documents.getSidebar);
   const create = useMutation(api.documents.create);
   const isResizingRef = useRef(false);
   const sidebarRef = useRef<ElementRef<"aside">>(null);
@@ -139,9 +139,7 @@ const MyNavigation = () => {
           <MyItem onClick={handleCreate} label="New page" icon={PlusCircle} />
         </div>
         <div className="mt-4">
-          {documents?.map((document: any) => (
-            <div key={document._id}>{document.title}</div>
-          ))}
+          <MyDocumentList />
         </div>
         <div
           onMouseDown={handleMouseDown}
