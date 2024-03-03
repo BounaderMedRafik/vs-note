@@ -40,7 +40,7 @@ const page = () => {
       <h2 className=" font-semibold text-xl">
         Welcom to {user?.firstName}&apos;s VS-NOTE
       </h2>
-      <Button onClick={onCreate}>
+      <Button variant="outline" onClick={onCreate}>
         <PlusCircle className="h-4 w-4 mr-2" />
         Got a note?
       </Button>

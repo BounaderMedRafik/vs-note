@@ -61,29 +61,26 @@ const MyDocumentList = ({ parentDocumentId, level = 0 }: DocumentListProps) => {
           level === 0 && "hidden"
         )}
       >
-        No ;-; inside
-        {documents.map((document) => (
-          <div key={document._id}>
-            <MyItem
-              id={document._id}
-              onClick={() => onRedirect(document._id)}
-              label={document.title}
-              icon={FileIcon}
-              documentIcon={document.icon}
-              active={params.documentId === document._id}
-              level={level}
-              onExpand={() => onExpand(document._id)}
-              expanded={expanded[document._id]}
-            />
-            {expanded[document._id] && (
-              <MyDocumentList
-                parentDocumentId={document._id}
-                level={level + 1}
-              />
-            )}
-          </div>
-        ))}
+        No pages inside
       </p>
+      {documents.map((document) => (
+        <div key={document._id}>
+          <MyItem
+            id={document._id}
+            onClick={() => onRedirect(document._id)}
+            label={document.title}
+            icon={FileIcon}
+            documentIcon={document.icon}
+            active={params.documentId === document._id}
+            level={level}
+            onExpand={() => onExpand(document._id)}
+            expanded={expanded[document._id]}
+          />
+          {expanded[document._id] && (
+            <MyDocumentList parentDocumentId={document._id} level={level + 1} />
+          )}
+        </div>
+      ))}
     </>
   );
 };

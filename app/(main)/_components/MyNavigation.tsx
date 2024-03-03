@@ -16,6 +16,7 @@ import { api } from "@/convex/_generated/api";
 import MyItem from "./MyItem";
 import { toast } from "sonner";
 import MyDocumentList from "./MyDocumentList";
+import { ModeToggle } from "@/components/mode-toggle";
 
 const MyNavigation = () => {
   const pathname = usePathname();
@@ -117,7 +118,7 @@ const MyNavigation = () => {
       <aside
         ref={sidebarRef}
         className={cn(
-          "group/sidebar h-full bg-primary border-r overflow-y-auto relative flex w-60 flex-col z-[99999]",
+          "group/sidebar h-full bg-secondary border-r overflow-y-auto relative flex w-60 flex-col z-[99999]",
           isResetting && "transition-all ease-in-out duration-300",
           isMobile && "w-0"
         )}
@@ -166,6 +167,7 @@ const MyNavigation = () => {
           )}
         </nav>
       </div>
+      <ModeToggle />
     </>
   );
 };
