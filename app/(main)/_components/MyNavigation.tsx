@@ -1,5 +1,6 @@
 "use client";
 import { cn } from "@/lib/utils";
+import { useSearch } from "@/hooks/use-search";
 import {
   Popover,
   PopoverTrigger,
@@ -27,6 +28,7 @@ import { ModeToggle } from "@/components/mode-toggle";
 import MyTrashBox from "./MyTrashBox";
 
 const MyNavigation = () => {
+  const search = useSearch();
   const pathname = usePathname();
   const isMobile = useMediaQuery("(max-width: 768px)");
   const create = useMutation(api.documents.create);
@@ -143,7 +145,12 @@ const MyNavigation = () => {
         </div>
         <div>
           <MyUserItem />
-          <MyItem onClick={() => {}} label="Search" isSearch icon={Search} />
+          <MyItem
+            onClick={search.onOpen}
+            label="Search"
+            isSearch
+            icon={Search}
+          />
           <MyItem onClick={() => {}} label="Settings" icon={Settings} />
           <MyItem onClick={handleCreate} label="New page" icon={PlusCircle} />
         </div>
