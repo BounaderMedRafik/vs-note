@@ -1,17 +1,26 @@
 "use client";
 import { cn } from "@/lib/utils";
-import { ChevronsLeft, MenuIcon } from "lucide-react";
+import {
+  ChevronsLeft,
+  MenuIcon,
+  PlusCircle,
+  Search,
+  Settings,
+} from "lucide-react";
 import { usePathname } from "next/navigation";
 import { ElementRef, useEffect, useRef, useState } from "react";
 import { useMediaQuery } from "usehooks-ts";
 import MyUserItem from "./MyUserItem";
-import { useQuery } from "convex/react";
+import { useMutation, useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
+import MyItem from "./MyItem";
+import { toast } from "sonner";
 
 const MyNavigation = () => {
   const pathname = usePathname();
   const isMobile = useMediaQuery("(max-width: 768px)");
   const documents = useQuery(api.documents.getSidebar);
+  const create = useMutation(api.documents.create);
   const isResizingRef = useRef(false);
   const sidebarRef = useRef<ElementRef<"aside">>(null);
   const navbarRef = useRef<ElementRef<"div">>(null);
@@ -93,12 +102,22 @@ const MyNavigation = () => {
     }
   };
 
+  const handleCreate = () => {
+    const promise = create({ title: "Untitled" });
+
+    toast.promise(promise, {
+      loading: "Creating a new note...",
+      success: "New note created!",
+      error: "Failed to create a new note.",
+    });
+  };
+
   return (
     <>
       <aside
         ref={sidebarRef}
         className={cn(
-          "group/sidebar h-full bg-secondary overflow-y-auto relative flex w-60 flex-col z-[99999]",
+          "group/sidebar h-full bg-primary border-r overflow-y-auto relative flex w-60 flex-col z-[99999]",
           isResetting && "transition-all ease-in-out duration-300",
           isMobile && "w-0"
         )}
@@ -107,7 +126,7 @@ const MyNavigation = () => {
           onClick={collapse}
           role="button"
           className={cn(
-            "h-6 w-6  flex items-center justify-center text-background hover:bg-background/75 hover:text-foreground absolute top-3 right-2 opacity-0 group-hover/sidebar:opacity-100 transition-all",
+            "h-6 w-6  flex items-center justify-center text-muted-foreground hover:bg-background/75 hover:text-foreground absolute top-3 right-2 opacity-0 group-hover/sidebar:opacity-100 transition-all",
             isMobile && "opacity-100"
           )}
         >
@@ -115,6 +134,9 @@ const MyNavigation = () => {
         </div>
         <div>
           <MyUserItem />
+          <MyItem onClick={() => {}} label="Search" isSearch icon={Search} />
+          <MyItem onClick={() => {}} label="Settings" icon={Settings} />
+          <MyItem onClick={handleCreate} label="New page" icon={PlusCircle} />
         </div>
         <div className="mt-4">
           {documents?.map((document: any) => (
