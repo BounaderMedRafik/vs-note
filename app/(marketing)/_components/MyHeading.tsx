@@ -11,7 +11,7 @@ const MyHeading = () => {
   const { isAuthenticated, isLoading } = useConvexAuth();
   return (
     <div className="max-w-3xl space-y-4">
-      <h1 className="text-2xl font-MyHeading sm:text-3xl md:text-4xl font-black">
+      <h1 className="text-2xl  font-MyHeading sm:text-3xl md:text-4xl font-black">
         Unlock the Power of Productivity: Where VS Code Themes Meet Notion's
         Brilliance! <span className="underline">VS-NOTE</span>
       </h1>

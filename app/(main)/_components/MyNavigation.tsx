@@ -16,7 +16,7 @@ import {
   Trash,
 } from "lucide-react";
 import { useSettings } from "@/hooks/use-settings";
-import { usePathname } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 import { ElementRef, useEffect, useRef, useState } from "react";
 import { useMediaQuery } from "usehooks-ts";
 import MyUserItem from "./MyUserItem";
@@ -25,12 +25,13 @@ import { api } from "@/convex/_generated/api";
 import MyItem from "./MyItem";
 import { toast } from "sonner";
 import MyDocumentList from "./MyDocumentList";
-import { ModeToggle } from "@/components/mode-toggle";
 import MyTrashBox from "./MyTrashBox";
+import MyLovelyNavBar from "./MyLovelyNavbar";
 
 const MyNavigation = () => {
   const settings = useSettings();
   const search = useSearch();
+  const params = useParams();
   const pathname = usePathname();
   const isMobile = useMediaQuery("(max-width: 768px)");
   const create = useMutation(api.documents.create);
@@ -186,15 +187,19 @@ const MyNavigation = () => {
           isMobile && "left-0 w-full"
         )}
       >
-        <nav className="bg-transparent px-3 py-2 w-full">
-          {isCollapsed && (
-            <MenuIcon
-              onClick={resetWidth}
-              role="button"
-              className="h-6 w-6 text-black"
-            />
-          )}
-        </nav>
+        {!!params.documentId ? (
+          <MyLovelyNavBar isCollapsed={isCollapsed} onResetWidth={resetWidth} />
+        ) : (
+          <nav className="bg-transparent px-3 py-2 w-full">
+            {isCollapsed && (
+              <MenuIcon
+                onClick={resetWidth}
+                role="button"
+                className="h-6 w-6 text-black"
+              />
+            )}
+          </nav>
+        )}
       </div>
     </>
   );
