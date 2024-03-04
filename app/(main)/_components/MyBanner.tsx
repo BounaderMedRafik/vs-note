@@ -13,7 +13,52 @@ interface BannerProps {
 }
 
 const MyBanner = ({ documentId }: BannerProps) => {
-  return <div> 4:34 MyBanner</div>;
+  const router = useRouter();
+  const remove = useMutation(api.documents.remove);
+  const restore = useMutation(api.documents.restore);
+  const onRemove = () => {
+    const promise = remove({ id: documentId });
+
+    toast.promise(promise, {
+      loading: "Deleting note...",
+      success: "Note deleted!",
+      error: "Failed to delete note.",
+    });
+    router.push("/documents");
+  };
+
+  const onRestore = () => {
+    const promise = restore({ id: documentId });
+
+    toast.promise(promise, {
+      loading: "Restoring note...",
+      success: "Note restored!",
+      error: "Failed to restore note.",
+    });
+  };
+
+  return (
+    <div className="w-full bg-rose-500 text-center text-sm p-2 text-white flex items-center gap-x-2 justify-center">
+      <div>This page is in Trash ;-;</div>
+      <Button
+        size="sm"
+        onClick={onRestore}
+        variant="outline"
+        className="border-white bg-transparent hover:bg-primary/5 text-white hover:text-white py-0.5 px-2 h-auto font-normal "
+      >
+        Restore Page
+      </Button>
+      <MyConfirmModal onConfirm={onRemove}>
+        <Button
+          size="sm"
+          variant="outline"
+          className="border-white bg-transparent hover:bg-primary/5 text-white hover:text-white py-0.5 px-2 h-auto font-normal "
+        >
+          Remove Page
+        </Button>
+      </MyConfirmModal>
+    </div>
+  );
 };
 
 export default MyBanner;
