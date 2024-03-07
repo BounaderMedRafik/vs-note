@@ -4,7 +4,7 @@ import React from "react";
 import { useQuery } from "convex/react";
 import { Id } from "@/convex/_generated/dataModel";
 import { api } from "@/convex/_generated/api";
-import MyToolBar from "@/components/MyToolBar";
+import { MyToolbar } from "@/components/MyToolBar";
 
 interface DocumentIdPageProps {
   params: {
@@ -29,7 +29,7 @@ const Docpage = ({ params }: DocumentIdPageProps) => {
     <div className="pb-40">
       <div className="h-[35vh]"></div>
       <div className="md:max-w-3xl lg:max-w-4xl  mx-auto">
-        <MyToolBar initialData={document} />
+        <MyToolbar initialData={document} />
       </div>
     </div>
   );
