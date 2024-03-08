@@ -1,12 +1,11 @@
 "use client";
 
-import "@blocknote/core/fonts/inter.css";
-import { BlockNoteView, useCreateBlockNote } from "@blocknote/react";
-import "@blocknote/react/style.css";
+import { useTheme } from "next-themes";
+import { BlockNoteEditor, PartialBlock } from "@blocknote/core";
+import { BlockNoteView, useBlockNote } from "@blocknote/react";
+import "@blocknote/core/style.css";
 
 import { useEdgeStore } from "@/lib/edgestore";
-import { useTheme } from "next-themes";
-import { BlockNoteEditor } from "@blocknote/core";
 
 interface EditorProps {
   onChange: (value: string) => void;
@@ -14,7 +13,7 @@ interface EditorProps {
   editable?: boolean;
 }
 
-const MyEditor = ({ onChange, initialContent, editable }: EditorProps) => {
+const Editor = ({ onChange, initialContent, editable }: EditorProps) => {
   const { resolvedTheme } = useTheme();
   const { edgestore } = useEdgeStore();
 
@@ -47,4 +46,4 @@ const MyEditor = ({ onChange, initialContent, editable }: EditorProps) => {
   );
 };
 
-export default MyEditor;
+export default Editor;
