@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { toast } from "sonner";
+
 const page = () => {
   const { user } = useUser();
   const create = useMutation(api.documents.create);
