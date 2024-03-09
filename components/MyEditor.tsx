@@ -2,6 +2,7 @@
 
 import { useTheme } from "next-themes";
 import { BlockNoteEditor, PartialBlock } from "@blocknote/core";
+//@ts-ignore
 import { BlockNoteView, useBlockNote } from "@blocknote/react";
 import "@blocknote/core/style.css";
 
@@ -30,7 +31,7 @@ const Editor = ({ onChange, initialContent, editable }: EditorProps) => {
     initialContent: initialContent
       ? (JSON.parse(initialContent) as PartialBlock[])
       : undefined,
-    onEditorContentChange: (editor) => {
+    onEditorContentChange: (editor: any) => {
       onChange(JSON.stringify(editor.topLevelBlocks, null, 2));
     },
     uploadFile: handleUpload,

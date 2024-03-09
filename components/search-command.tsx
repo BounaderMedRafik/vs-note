@@ -54,7 +54,9 @@ export const MySearchCommand = () => {
       <CommandDialog open={isOpen} onOpenChange={onClose}>
         <CommandInput placeholder={`Search ${user?.fullName}'s notes`} />
         <CommandList>
-          <CommandEmpty>No result found.</CommandEmpty>
+          <CommandEmpty>
+            <span className=" text-muted-foreground">No result found.</span>
+          </CommandEmpty>
           <CommandGroup heading="Documents">
             {documents?.map((document) => (
               <CommandItem
