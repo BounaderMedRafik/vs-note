@@ -4,20 +4,23 @@ import { Spinner } from "@/components/MySpinner";
 import { Button } from "@/components/ui/button";
 import { SignInButton } from "@clerk/clerk-react";
 import { useConvexAuth } from "convex/react";
-import { ArrowRight, NotepadText } from "lucide-react";
+import { ArrowRight, Cat, GanttChart, NotepadText } from "lucide-react";
 import Link from "next/link";
 
 const MyHeading = () => {
   const { isAuthenticated, isLoading } = useConvexAuth();
   return (
     <div className="max-w-3xl space-y-4">
-      <h1 className="text-2xl  font-MyHeading sm:text-3xl md:text-4xl font-black">
-        Unlock the Power of Productivity: Where VS Code Themes Meet
-        Notion&apos;s Brilliance! <span className="underline">VS-NOTE</span>
+      <h1 className="text-2xl   font-MyHeading sm:text-3xl md:text-6xl font-black">
+        Let's Open A Whole Meow Note World For You
       </h1>
-      <h3 className="text-base sm:text-xl md:text-2xl font-light">
-        Migrate the visibility of Visual Studio Code <br /> with the
-        functionality of Notion
+      <h3 className=" flex text-base sm:text-xl md:text-2xl font-light">
+        <span className="relative">
+          MeowNote
+          <GanttChart className="absolute bottom-0" />
+        </span>{" "}
+        will be the best place to organize your notes and clearify your
+        brainstorms in very cute templates
       </h3>
       {isLoading && (
         <div className=" w-full flex items-center justify-center">
@@ -28,7 +31,7 @@ const MyHeading = () => {
         <Button asChild>
           <Link href="/documents">
             Check Docs
-            <NotepadText className="h-4 w-4 ml-2" />
+            <Cat className="h-4 w-4 ml-2" />
           </Link>
         </Button>
       )}
