@@ -15,13 +15,13 @@ const MyHeroes = () => {
       />
       <Image
         src={MarketingCat2}
-        className=" h-48 rounded-full mt-1 -translate-y-10 border-black border-2 object-cover"
+        className=" h-48 rounded-full mt-1  border-black border-2 object-cover"
         alt="MarketingCat2"
         objectFit="true"
       />
       <Image
         src={MarketingCat3}
-        className=" h-48 rounded-full mt-1 -translate-y-10 border-black border-2 object-cover"
+        className=" h-48 rounded-full  mt-1 border-black border-2 object-cover"
         alt="MarketingCat2"
         objectFit="true"
       />
