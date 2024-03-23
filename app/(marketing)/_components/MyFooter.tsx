@@ -1,18 +1,21 @@
 import { Button } from "@/components/ui/button";
 import React from "react";
 import MyLogo from "./MyLogo";
+import { Instagram } from "lucide-react";
 
 const MyFooter = () => {
   return (
-    <div className="flex items-center w-full p-6 bg-background z-50 dark:border-t">
-      <MyLogo />
-      <div className="md:ml-auto w-full justify-end md:justify-end flex items-center gap-x-2 text-muted-foreground">
-        <Button variant="outline" size="sm">
-          Privacy Policy
-        </Button>
-        <Button variant="outline" size="sm">
-          Terms & Conditions
-        </Button>
+    <div className="py-6">
+      <div className="flex border-t items-center w-full px-6 bg-background z-50 dark:border-t">
+        <MyLogo />
+        <div className="md:ml-auto w-full justify-end md:justify-end flex items-center gap-x-2 text-muted-foreground">
+          <Button variant="outline" size="sm">
+            Privacy Policy
+          </Button>
+          <Button variant="outline" size="sm">
+            Terms & Conditions
+          </Button>
+        </div>
       </div>
     </div>
   );

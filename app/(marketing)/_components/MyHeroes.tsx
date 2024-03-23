@@ -1,39 +1,30 @@
 import React from "react";
 import Image from "next/image";
+import MarketingCat from "@/public/AfterMath/CatMarketing.png";
+import MarketingCat2 from "@/public/AfterMath/CatMarketing2.jpg";
+import MarketingCat3 from "@/public/AfterMath/CatMarketing3.jpg";
 
 const MyHeroes = () => {
   return (
-    <div className="flex flex-col items-center justify-center max-w-5xl">
-      <div className="flex items-center">
-        <div className="relative w-[300px] h-[300px] sm:w-[350px] sm:h-[350px] md:h-[400px] md:w-[400px]">
-          <Image
-            src="/placeholders/documents.png"
-            fill
-            className="object-contain dark:hidden"
-            alt="Documents"
-          />
-          <Image
-            src="/placeholders/documents-dark.png"
-            fill
-            className="object-contain hidden dark:block"
-            alt="Documents"
-          />
-        </div>
-        <div className="relative h-[400px] w-[400px] hidden md:block">
-          <Image
-            src="/placeholders/reading.png"
-            fill
-            className="object-contain dark:hidden"
-            alt="Reading"
-          />
-          <Image
-            src="/placeholders/reading-dark.png"
-            fill
-            className="object-contain hidden dark:block"
-            alt="Reading"
-          />
-        </div>
-      </div>
+    <div className=" relative rounded-full">
+      <Image
+        src={MarketingCat}
+        className=" h-48 rounded-full border-black border-2 mt-10 object-cover"
+        alt="MarketingCat"
+        objectFit="true"
+      />
+      <Image
+        src={MarketingCat2}
+        className=" h-48 rounded-full mt-1 -translate-y-10 border-black border-2 object-cover"
+        alt="MarketingCat2"
+        objectFit="true"
+      />
+      <Image
+        src={MarketingCat3}
+        className=" h-48 rounded-full mt-1 -translate-y-10 border-black border-2 object-cover"
+        alt="MarketingCat2"
+        objectFit="true"
+      />
     </div>
   );
 };

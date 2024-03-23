@@ -17,7 +17,7 @@ const MyHeading = () => {
       <h3 className=" flex text-base sm:text-xl md:text-2xl font-light">
         <span className="relative">
           MeowNote
-          <GanttChart className="absolute bottom-0" />
+          <GanttChart className="absolute bottom-4 " />
         </span>{" "}
         will be the best place to organize your notes and clearify your
         brainstorms in very cute templates
@@ -38,7 +38,7 @@ const MyHeading = () => {
       {!isAuthenticated && !isLoading && (
         <SignInButton mode="modal">
           <Button>
-            Start With Us Now
+            Let's Begin Now
             <ArrowRight className="h-4 w-4 ml-2" />
           </Button>
         </SignInButton>
