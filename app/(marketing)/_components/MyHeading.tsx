@@ -4,7 +4,7 @@ import { Spinner } from "@/components/MySpinner";
 import { Button } from "@/components/ui/button";
 import { SignInButton } from "@clerk/clerk-react";
 import { useConvexAuth } from "convex/react";
-import { ArrowRight, Cat, GanttChart, NotepadText } from "lucide-react";
+import { ArrowRight, Cat, Check, GanttChart, NotepadText } from "lucide-react";
 import Link from "next/link";
 
 const MyHeading = () => {
@@ -27,8 +27,8 @@ const MyHeading = () => {
       {isAuthenticated && !isLoading && (
         <Button asChild>
           <Link href="/documents">
-            Check Docs
-            <Cat className="h-4 w-4 ml-2" />
+            Enter MeowNote
+            <Check className="h-4 w-4 ml-2" />
           </Link>
         </Button>
       )}

@@ -6,7 +6,7 @@ import React from "react";
 import MyLogo from "./MyLogo";
 import { ModeToggle } from "@/components/mode-toggle";
 import { useConvexAuth } from "convex/react";
-import { SignInButton, UserButton } from "@clerk/clerk-react";
+import { SignInButton, SignUpButton, UserButton } from "@clerk/clerk-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Spinner } from "@/components/MySpinner";
@@ -18,7 +18,7 @@ const MyNavBar = () => {
   return (
     <div
       className={cn(
-        "z-50 bg-[#EEEEEE] fixed top-0 flex items-center gap-4 w-full p-6",
+        "z-50 bg-[#EEEEEE] dark:bg-[#001524] fixed top-0 flex items-center gap-4 w-full p-6",
         scrolled && "border-b shadow-sm"
       )}
     >
@@ -32,18 +32,18 @@ const MyNavBar = () => {
         {!isAuthenticated && !isLoading && (
           <>
             <SignInButton mode="modal">
-              <Button variant="outline">Log In</Button>
+              <Button variant="link">Have An Account ?</Button>
             </SignInButton>
 
-            <SignInButton mode="modal">
-              <Button>GET VS-NOTE NOW</Button>
-            </SignInButton>
+            <SignUpButton mode="modal">
+              <Button>Start Now</Button>
+            </SignUpButton>
           </>
         )}
         {isAuthenticated && !isLoading && (
           <>
             <Button className=" rounded-full" variant="outline" asChild>
-              <Link href="/documents">Access VS-NOTE</Link>
+              <Link href="/documents">Enter MeowNote</Link>
             </Button>
             <UserButton afterSignOutUrl="/" />
           </>
