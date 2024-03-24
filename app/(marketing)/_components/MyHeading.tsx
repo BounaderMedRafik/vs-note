@@ -15,12 +15,9 @@ const MyHeading = () => {
         Let's Open A Whole Meow Note World For You
       </h1>
       <h3 className=" flex text-base sm:text-xl md:text-2xl font-light">
-        <span className="relative">
-          MeowNote
-          <GanttChart className="absolute bottom-4 " />
-        </span>{" "}
-        will be the best place to organize your notes and clearify your
-        brainstorms in very cute templates
+        <span className="relative font-bold text-[#627254]">MeowNote</span> will
+        be the best place to organize your notes and clearify your brainstorms
+        in very cute templates
       </h3>
       {isLoading && (
         <div className=" w-full flex items-center justify-center">

@@ -5,8 +5,8 @@ import { Instagram } from "lucide-react";
 
 const MyFooter = () => {
   return (
-    <div className="py-6">
-      <div className="flex border-t items-center w-full px-6 bg-background z-50 dark:border-t">
+    <div className="py-6 bg-[#EEEEEE]">
+      <div className="flex pt-6 border-t items-center w-full px-6  z-50 dark:border-t">
         <MyLogo />
         <div className="md:ml-auto w-full justify-end md:justify-end flex items-center gap-x-2 text-muted-foreground">
           <Button variant="outline" size="sm">
