@@ -133,7 +133,7 @@ const MyNavigation = () => {
       <aside
         ref={sidebarRef}
         className={cn(
-          "group/sidebar overflow-x-hidden  h-full bg-secondary border-r overflow-y-auto relative flex w-60 flex-col z-[99999]",
+          "group/sidebar bg-[#DDDDDD] overflow-x-hidden  h-full  border-r overflow-y-auto relative flex w-60 flex-col z-50",
           isResetting && "transition-all ease-in-out duration-300",
           isMobile && "w-0"
         )}
@@ -148,7 +148,7 @@ const MyNavigation = () => {
         >
           <ChevronsLeft className="h-6 w-6 " />
         </div>
-        <div>
+        <div className="z-[99999]">
           <MyUserItem />
           <MyItem
             onClick={search.onOpen}

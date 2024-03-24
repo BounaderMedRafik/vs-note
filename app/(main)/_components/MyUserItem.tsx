@@ -1,5 +1,5 @@
 "use client";
-import { ChevronsLeftRight } from "lucide-react";
+import { ChevronsLeftRight, LogOut } from "lucide-react";
 import { SignOutButton, useUser } from "@clerk/clerk-react";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import {
@@ -19,14 +19,14 @@ const MyUserItem = () => {
         <DropdownMenuTrigger asChild>
           <div
             role="button"
-            className=" flex items-center text-xs p-3 w-full hover:bg-primary/5"
+            className=" flex items-center text-xs p-3 w-full hover:bg-[#EEEEEE] "
           >
             <div className="gap-x-2 flex items-center max-w-[150px]">
-              <Avatar className=" h-5 w-5">
+              <Avatar className=" h-7 w-7 border-green-500 border-2">
                 <AvatarImage src={user?.imageUrl} />
               </Avatar>
-              <span className="text-start font-medium line-clamp-1">
-                {user?.fullName}&apos;s VS-NOTE
+              <span className="text-start text-md font-medium line-clamp-1">
+                {user?.fullName}
               </span>
             </div>
             <ChevronsLeftRight className="rotate-90 ml-2 text-muted-foreground h-4 w-4" />
@@ -57,9 +57,14 @@ const MyUserItem = () => {
           <DropdownMenuSeparator />
           <DropdownMenuItem
             asChild
-            className=" w-full cursor-pointer text-muted-foreground"
+            className=" w-full bg-[#76885B]/75 text-xs flex justify-start items-center gap-2 text-white  cursor-pointer hover:opacity-90 transition-all "
           >
-            <SignOutButton>Log Out</SignOutButton>
+            <SignOutButton>
+              <div className="">
+                <LogOut size={15} />
+                Log Out
+              </div>
+            </SignOutButton>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

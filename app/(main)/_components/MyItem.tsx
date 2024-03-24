@@ -96,8 +96,8 @@ const MyItem = ({
     <>
       <div
         className={cn(
-          "group min-h-[27px] text-sm py-1 pr-3 w-full hover:bg-primary/50 dark:hover:text-secondary transition-all border-l-[1px] hover:border-black/20 hover:ml-0.5 border-b border-black/0  flex items-center text-muted-foreground font-medium ",
-          active && "bg-primary/5 text-primary"
+          "group min-h-[27px] text-sm py-1 pr-3 w-full hover:bg-[#EEEEEE] dark:hover:text-secondary transition-all border-l-[1px]   flex items-center  font-medium ",
+          active && "bg-[#EEEEEE] text-md text-[#76885B] font-bold"
         )}
         onClick={onClick}
         role="button"
@@ -123,7 +123,7 @@ const MyItem = ({
 
         <span className=" truncate">{label}</span>
         {isSearch && (
-          <kbd className="ml-auto pointer-events-none inline-flex h-5 select-none items-center gap-1 border dark:bg-neutral-600 rounded-full px-2 py-0.5 font-mono text-xs font-bold text-muted-foreground opacity-100">
+          <kbd className="ml-auto text-[#EEEEEE] gap-1 text-xs px-2 py-1 inline-flex items-center justify-center whitespace-nowrap rounded-xl  font-bold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 uppercase tracking-wide bg-[#627254]  hover:bg-[#627254]/90 border-[#a7b88d] border-b-4 active:border-b-0">
             <span className="text-xs">⌘</span>K
           </kbd>
         )}

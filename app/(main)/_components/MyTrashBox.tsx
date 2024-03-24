@@ -9,7 +9,7 @@ import { Search, Trash, Undo } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { toast } from "sonner";
-
+import Image from "next/image";
 const MyTrashBox = () => {
   const router = useRouter();
   const params = useParams();
@@ -60,7 +60,7 @@ const MyTrashBox = () => {
   }
 
   return (
-    <div className="text-sm">
+    <div className="text-sm ">
       <div className="flex items-center gap-x-1 p-2">
         <Search />
         <Input
@@ -70,7 +70,7 @@ const MyTrashBox = () => {
           placeholder="Filter by page title..."
         />
       </div>
-      <div className="mt-2 px-1 pb-1">
+      <div className="mt-2 p-1 ">
         <p className="hidden last:block text-xs text-center text-muted-foreground pb-2">
           No Docs Found.
         </p>
@@ -79,23 +79,23 @@ const MyTrashBox = () => {
             key={document._id}
             role="button"
             onClick={() => onClick(document._id)}
-            className="text-sm rounded-sm w-full hover:bg-secondary/5 flex items-center text-primary justify-between"
+            className="text-sm mt-1 rounded-sm w-full hover:bg-secondary/5 flex items-center text-primary justify-between"
           >
-            <span className=" text-muted-foreground truncate pl-2">
-              {document.title}
+            <span className=" font-semibold truncate pl-2">
+              • {document.title}
             </span>
-            <div className="flex items-center">
+            <div className="flex items-center gap-1">
               <div
                 onClick={(e) => onRestore(e, document._id)}
                 role="button"
-                className="rounded-sm p-2 hover:bg-neutral-200 dark:hover:bg-neutral-600"
+                className="rounded-sm p-2 bg-[#76885B] text-white hover:bg-[#76885B]/80 dark:hover:bg-neutral-600"
               >
                 <Undo className=" text-muted-foreground h-4 w-4" />
               </div>
               <MyConfirmModal onConfirm={() => onRemove(document._id)}>
                 <div
                   role="button"
-                  className="rounded-sm p-2 hover:bg-neutral-200 dark:hover:bg-neutral-600"
+                  className="rounded-sm p-2 bg-red-500 text-white hover:bg-red-400 "
                 >
                   <Trash className="h-4 w-4 text-muted-foreground" />
                 </div>

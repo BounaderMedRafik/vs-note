@@ -22,7 +22,7 @@ const Mylayout = ({ children }: { children: React.ReactNode }) => {
     return redirect("/");
   }
   return (
-    <div className="h-full flex">
+    <div className="h-full flex bg-[#EEEEEE] dark:bg-[#001524]">
       <MyNavigation />
       <main className="flex-1 h-full overflow-y-auto">
         <MySearchCommand />
