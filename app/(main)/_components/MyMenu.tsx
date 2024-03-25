@@ -53,12 +53,12 @@ const MyMenu = ({ documentId }: MenuProps) => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button size="sm" variant="ghost">
+        <Button size="sm" variant="outline">
           <MoreHorizontal className=" h-4 w-4" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent
-        className="w-60"
+        className="w-60 "
         align="end"
         alignOffset={8}
         forceMount
@@ -66,10 +66,6 @@ const MyMenu = ({ documentId }: MenuProps) => {
         <DropdownMenuItem onClick={onArchive}>
           <Trash className=" h-4 w-4 mr-2" />
           Delete
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={onRestore}>
-          <Rabbit className=" h-4 w-4 mr-2" />
-          RestoreBunny
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <div className="text-xs text-muted-foreground">

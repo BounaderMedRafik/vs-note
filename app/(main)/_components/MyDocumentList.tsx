@@ -61,7 +61,8 @@ const MyDocumentList = ({ parentDocumentId, level = 0 }: DocumentListProps) => {
           level === 0 && "hidden"
         )}
       >
-        No pages inside
+        No Meow Notes Here.
+        <div className="w-full h-0.5 mt-1 rounded-full mr-2 bg-black/10"></div>
       </p>
       {documents.map((document) => (
         <div key={document._id}>

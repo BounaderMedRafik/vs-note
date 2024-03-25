@@ -49,7 +49,9 @@ export const Title = ({ initialData }: TitleProps) => {
 
   return (
     <div className="flex items-center gap-x-1">
-      {!!initialData.icon && <p>{initialData.icon}</p>}
+      {!!initialData.icon && (
+        <p className="text-xl mt-1 ">{initialData.icon}</p>
+      )}
       {isEditing ? (
         <Input
           ref={inputRef}
@@ -58,16 +60,21 @@ export const Title = ({ initialData }: TitleProps) => {
           onChange={onChange}
           onKeyDown={onKeyDown}
           value={title}
-          className="h-7 px-2 focus-visible:ring-transparent"
+          className="h-7 font-bold px-2 focus-visible:ring-transparent"
         />
       ) : (
         <Button
           onClick={enableInput}
-          variant="ghost"
+          variant="link"
           size="sm"
           className="font-normal h-auto p-1"
         >
-          <span className="truncate">{initialData?.title}</span>
+          <span className="truncate font-bold">
+            {initialData?.title}
+            <span className="text-xs ml-2 text-slate-400 font-mono">
+              Click To Edit
+            </span>
+          </span>
         </Button>
       )}
     </div>

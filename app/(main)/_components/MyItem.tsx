@@ -23,6 +23,7 @@ import {
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
 import { useUser } from "@clerk/clerk-react";
+import { Button } from "@/components/ui/button";
 
 interface ItemProps {
   id?: Id<"documents">;
@@ -87,17 +88,18 @@ const MyItem = ({
     );
 
     toast.promise(promise, {
-      loading: "Creating a new note...",
-      success: "New note created!",
-      error: "Failed to create a new note.",
+      loading: "Creating a new Meow note...",
+      success: "Meow New note created!",
+      error: "Failed to create a new Meow note.",
     });
   };
   return (
     <>
       <div
         className={cn(
-          "group min-h-[27px] text-sm py-1 pr-3 w-full hover:bg-[#EEEEEE] dark:hover:text-secondary transition-all border-l-[1px]   flex items-center  font-medium ",
-          active && "bg-[#EEEEEE] text-md text-[#76885B] font-bold"
+          "group min-h-[27px] text-sm py-1 pr-3 w-full hover:bg-[#EEEEEE] dark:hover:bg-[#EEEEEE]/20 transition-all    flex items-center  font-medium ",
+          active &&
+            "bg-[#EEEEEE] dark:bg-[#EEEEEE]/20 dark:text-lime-500 text-md text-[#76885B] font-bold"
         )}
         onClick={onClick}
         role="button"
@@ -109,23 +111,23 @@ const MyItem = ({
           <div
             onClick={handleExpand}
             role="button"
-            className="h-full rounded-sm hover:bg-primary dark:hover:bg-neutral-600"
+            className="h-full rounded-sm "
           >
-            <ChevronsIcon className="h-4 w-4 group-hover:text-neutral-600 shrink-0 text-muted-foreground/50" />
+            <ChevronsIcon className="h-4 w-4  shrink-0 " />
           </div>
         )}
 
         {documentIcon ? (
           <div className=" shrink-0 mr-2 text-[18px] ">{documentIcon}</div>
         ) : (
-          <Icon className="shrink-0 h-[18px] group-hover:text-neutral-600 mr-2 text-muted-foreground" />
+          <Icon className="shrink-0 h-[18px]  mr-2 " />
         )}
 
         <span className=" truncate">{label}</span>
         {isSearch && (
-          <kbd className="ml-auto text-[#EEEEEE] gap-1 text-xs px-2 py-1 inline-flex items-center justify-center whitespace-nowrap rounded-xl  font-bold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 uppercase tracking-wide bg-[#627254]  hover:bg-[#627254]/90 border-[#a7b88d] border-b-4 active:border-b-0">
-            <span className="text-xs">⌘</span>K
-          </kbd>
+          <Button variant="popped" className="ml-auto text-xs ">
+            <span className="text-xs font-black">CTRL + K</span>
+          </Button>
         )}
         {!!id && (
           <div className="ml-auto flex items-center gap-x-2">
@@ -135,7 +137,7 @@ const MyItem = ({
                   role="button"
                   className="opacity-0 transition-all group-hover:opacity-100 h-full ml-auto rounded-sm hover:bg-neutral-300 dark:hover:bg-neutral-600"
                 >
-                  <MoreHorizontal className="h-4 w-4 text-muted-foreground" />
+                  <MoreHorizontal className="h-4 w-4 " />
                 </div>
               </DropdownMenuTrigger>
               <DropdownMenuContent
@@ -160,7 +162,7 @@ const MyItem = ({
               onClick={onCreate}
               className="opacity-0 group-hover:opacity-100 transition-all h-full ml-auto rounded-sm hover:bg-neutral-300  dark:hover:bg-neutral-600/10 "
             >
-              <Plus className="h-4 w-4 text-muted-foreground dark:text-neutral-600" />
+              <Plus className="h-4 w-4 " />
             </div>
           </div>
         )}

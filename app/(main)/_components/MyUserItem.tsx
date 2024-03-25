@@ -19,7 +19,7 @@ const MyUserItem = () => {
         <DropdownMenuTrigger asChild>
           <div
             role="button"
-            className=" flex items-center text-xs p-3 w-full hover:bg-[#EEEEEE] "
+            className=" flex items-center text-xs p-3 w-full hover:bg-[#EEEEEE] dark:hover:bg-[#EEEEEE]/10 "
           >
             <div className="gap-x-2 flex items-center max-w-[150px]">
               <Avatar className=" h-7 w-7 border-green-500 border-2">

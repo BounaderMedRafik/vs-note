@@ -4,7 +4,7 @@ import { Doc } from "@/convex/_generated/dataModel";
 import { useState } from "react";
 import { useMutation } from "convex/react";
 import { toast } from "sonner";
-import { Check, Copy, Globe } from "lucide-react";
+import { Check, Copy, Globe, MoveUpRight, X } from "lucide-react";
 
 import {
   PopoverTrigger,
@@ -71,20 +71,29 @@ const MyPublish = ({ initialData }: PublishProps) => {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button size="sm" variant="ghost">
-          Publish
-          {initialData.isPublished && (
-            <Globe className="text-sky-500 w-4 h-4 ml-2" />
+        <Button size="sm" variant="popped">
+          {initialData.isPublished ? (
+            <div className="flex items-center">
+              Meow Note is live
+              <Globe className=" w-4 h-4 ml-2" />
+            </div>
+          ) : (
+            <div>Publish</div>
           )}
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-72" align="end" alignOffset={8} forceMount>
+      <PopoverContent
+        className="w-72 rounded-lg "
+        align="end"
+        alignOffset={8}
+        forceMount
+      >
         {initialData.isPublished ? (
           <div className="space-y-4">
             <div className="flex items-center gap-x-2">
-              <Globe className="text-sky-500 animate-pulse h-4 w-4" />
-              <p className="text-xs font-medium text-sky-500">
-                This note is live on web.
+              <Globe className="text-[#627254]  animate-pulse h-4 w-4" />
+              <p className="text-xs  text-[#627254] font-bold">
+                Everyone can view your MeowNote
               </p>
             </div>
             <div className="flex items-center">
@@ -107,11 +116,13 @@ const MyPublish = ({ initialData }: PublishProps) => {
             </div>
             <Button
               size="sm"
-              className="w-full text-xs"
+              variant="destructive"
+              className="w-full flex items-center justify-center gap-2 uppercase"
               disabled={isSubmitting}
               onClick={onUnpublish}
             >
               Unpublish
+              <X className="h-4 w-4" />
             </Button>
           </div>
         ) : (
@@ -119,15 +130,17 @@ const MyPublish = ({ initialData }: PublishProps) => {
             <Globe className="h-8 w-8 text-muted-foreground mb-2" />
             <p className="text-sm font-medium mb-2">Publish this note</p>
             <span className="text-xs text-muted-foreground mb-4">
-              Share your work with others.
+              Share your Meow Note with everyone else.
             </span>
             <Button
               disabled={isSubmitting}
               onClick={onPublish}
-              className="w-full text-xs"
+              variant="popped"
+              className="w-full  flex items-center justify-center gap-2"
               size="sm"
             >
               Publish
+              <MoveUpRight className="w-4 h-4" />
             </Button>
           </div>
         )}

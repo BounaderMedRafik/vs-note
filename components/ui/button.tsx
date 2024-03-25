@@ -9,6 +9,8 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
+        popped:
+          ' bg-[#627254] text-[#EEEEEE] hover:bg-[#627254]/90 border-[#76885B] border-b-4 active:border-b-0",',
         default:
           "bg-[#627254] shadow-xl  text-[#EEEEEE] hover:bg-[#76885B] dark:bg-[#76885B]  dark:hover:opacity-90",
         destructive:
